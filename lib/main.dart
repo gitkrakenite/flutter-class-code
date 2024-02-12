@@ -42,29 +42,39 @@ class HomeCard extends StatelessWidget {
         backgroundColor: primaryColor,
         foregroundColor: appWhiteColor,
       ),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Align(
-          alignment: Alignment.center,
-          child: CustomText(
-              label: "Login Details",
-              fontSize: 28,
-              labelColor: Colors.red,
-              textWeight: FontWeight.w700),
-        ),
-        SizedBox(height: 12.0),
-        CustomText(label: "Enter Username", fontSize: 18),
-        customTextField(),
-        SizedBox(height: 12.0),
-        CustomText(label: "Enter Password", fontSize: 18),
-        customTextField(),
-        SizedBox(height: 12.0),
-        ElevatedButton(
-            onPressed: () {
-              print("Hello");
-            },
-            style: const ButtonStyle(),
-            child: Text("Submit"))
-      ]),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/du.png", height: 70, width: 70),
+            ],
+          ),
+          const SizedBox(height: 24.0),
+          const Align(
+            alignment: Alignment.center,
+            child: CustomText(
+                label: "Login Details",
+                fontSize: 28,
+                labelColor: primaryColor,
+                textWeight: FontWeight.w700),
+          ),
+          const SizedBox(height: 12.0),
+          const CustomText(label: "Enter Username", fontSize: 18),
+          const customTextField(),
+          const SizedBox(height: 12.0),
+          const CustomText(label: "Enter Password", fontSize: 18),
+          const customTextField(),
+          const SizedBox(height: 12.0),
+          ElevatedButton(
+              onPressed: () {
+                print("Hello");
+              },
+              style: const ButtonStyle(),
+              child: Text("Submit"))
+        ]),
+      ),
     );
   }
 }
