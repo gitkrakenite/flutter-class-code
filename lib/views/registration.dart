@@ -5,14 +5,14 @@ import 'package:flutter_application_1/views/customtext.dart';
 import 'package:flutter_application_1/views/customtextfield.dart';
 import 'package:get/get.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _LoginState extends State<Login> {
+class _RegistrationPageState extends State<RegistrationPage> {
   var isPassword = true;
 
   @override
@@ -51,7 +51,7 @@ class _LoginState extends State<Login> {
               const Align(
                 alignment: Alignment.center,
                 child: CustomText(
-                  label: "Login Details",
+                  label: "Please Register",
                   fontSize: 28,
                   labelColor: primaryColor,
                   textWeight: FontWeight.w700,
@@ -65,12 +65,27 @@ class _LoginState extends State<Login> {
                 inputType: TextInputType.emailAddress,
                 childWidget: Icon(Icons.person, color: Colors.black),
               ),
+              // phone data
               const SizedBox(height: 24.0),
-              const CustomText(label: "Enter Password", fontSize: 18),
+              const CustomText(label: "Enter Phone", fontSize: 18),
+              const SizedBox(height: 10.0),
+              const customTextField(
+                hint: "+254 ",
+                inputType: TextInputType.phone,
+                childWidget: Icon(
+                  Icons.phone,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: 24.0),
+              const CustomText(
+                label: "Create Password",
+                fontSize: 18,
+              ),
               const SizedBox(height: 10.0),
               customTextField(
                 hint: "Password",
-                childWidget: const Icon(Icons.lock, color: Colors.black),
+                childWidget: Icon(Icons.lock, color: Colors.black),
                 isPassword: isPassword,
                 suffixShowcon: IconButton(
                   onPressed: () {
@@ -79,58 +94,41 @@ class _LoginState extends State<Login> {
                     });
                   },
                   icon: Icon(
-                    isPassword
-                        ? Icons.visibility
-                        : Icons.visibility_off_outlined,
-                    color: Colors.black,
-                  ),
+                      isPassword
+                          ? Icons.visibility
+                          : Icons.visibility_off_outlined,
+                      color: Colors.black),
                 ),
               ),
-              const SizedBox(height: 12.0),
+              const SizedBox(height: 24.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const CustomText(label: "Forgot Password", fontSize: 13),
-                  const SizedBox(width: 5.0),
-                  TextButton(
-                    onPressed: () {},
-                    child: const CustomText(
-                      label: "Recover",
-                      fontSize: 13,
-                      labelColor: primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const CustomText(label: "New Here", fontSize: 13),
+                  const CustomText(
+                      label: "Already have account ?", fontSize: 13),
                   const SizedBox(width: 5.0),
                   TextButton(
                     onPressed: () {
-                      Get.offAndToNamed("/register");
+                      Get.offAndToNamed("/");
                     },
                     child: const CustomText(
-                      label: "Create Account",
+                      label: "Sign in",
                       fontSize: 13,
                       labelColor: primaryColor,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 10.0),
+              const SizedBox(height: 24.0),
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
                   width: 200,
                   height: 40,
                   child: CustomButton(
-                    label: "Sign In",
+                    label: "Create Account",
                     callback: () {
-                      //Get.toNamed("/home"); //allow user to come back here
-                      Get.offAndToNamed("/home"); //no back arrow to here
+                      Get.offAndToNamed("/home");
                     },
                   ),
                 ),
@@ -140,7 +138,6 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+    ;
   }
-
-  //you can create functions here
 }

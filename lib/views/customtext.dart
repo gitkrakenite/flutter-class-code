@@ -6,12 +6,13 @@ class CustomText extends StatelessWidget {
   final Color labelColor;
   final FontWeight textWeight;
 
-  const CustomText(
-      {super.key,
-      required this.label,
-      this.fontSize = 12.0,
-      this.textWeight = FontWeight.normal,
-      this.labelColor = Colors.black});
+  const CustomText({
+    super.key,
+    required this.label,
+    this.fontSize = 12.0,
+    this.textWeight = FontWeight.normal,
+    this.labelColor = Colors.black,
+  });
 
   @override
   Widget build(BuildContext context) {
