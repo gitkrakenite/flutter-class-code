@@ -130,7 +130,7 @@ class _LoginState extends State<Login> {
                     label: "Sign In",
                     callback: () {
                       //Get.toNamed("/home"); //allow user to come back here
-                      Get.offAndToNamed("/home"); //no back arrow to here
+                      Get.offAndToNamed("/main"); //no back arrow to here
                     },
                   ),
                 ),

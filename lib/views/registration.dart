@@ -128,7 +128,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: CustomButton(
                     label: "Create Account",
                     callback: () {
-                      Get.offAndToNamed("/home");
+                      Get.offAndToNamed("/main");
                     },
                   ),
                 ),

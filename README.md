@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-### Notes
+# Notes
 
 We are using getx to manage state and do routes
 
@@ -21,7 +21,12 @@ in the routes.dart create your routes
 in the main.dart, use GetMaterialApp
 pass the initial route and getPages in the main.dart inside GetMaterialApp.
 
-# Routing Option
+## Routing Option
 
 Get.toNamed("/home"); //allow user to come back there with back arror
 Get.offAndToNamed("/home"); //no back arrow once navigated
+
+## Bottom Navigation Bar
+
+Gotten from pub.dev - https://pub.dev/packages/curved_navigation_bar
+Add it on pub.dev to be loaded in the project
