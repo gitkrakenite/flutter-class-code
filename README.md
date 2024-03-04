@@ -30,3 +30,10 @@ Get.offAndToNamed("/home"); //no back arrow once navigated
 
 Gotten from pub.dev - https://pub.dev/packages/curved_navigation_bar
 Add it on pub.dev to be loaded in the project
+
+## State storage using shared preference
+
+pub.dev shared_preferences https://pub.dev/packages/shared_preferences
+as long as the key is different, I can add as many preferences.
+you write a key vale
+you read the key and the value will show up

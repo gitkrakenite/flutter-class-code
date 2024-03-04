@@ -8,7 +8,7 @@ class customTextField extends StatelessWidget {
   final Widget? suffixShowcon;
   final bool isPassword;
   final dynamic inputType;
-  final TextEditingController? controller;
+  final TextEditingController? controller; //to track changes
 
   const customTextField({
     super.key,

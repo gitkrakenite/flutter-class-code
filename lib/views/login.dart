@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/configs/constants.dart';
+import 'package:flutter_application_1/utils/shared_preferences.dart';
 import 'package:flutter_application_1/views/custombutton.dart';
 import 'package:flutter_application_1/views/customtext.dart';
 import 'package:flutter_application_1/views/customtextfield.dart';
 import 'package:get/get.dart';
+
+//shared preferences object
+//we have two functions. read and write
+MysharedPreferences myPref = MysharedPreferences();
+
+//controllers to track inputs on text fields
+TextEditingController usernameController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -17,21 +26,16 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    //we can now read values from sharedpreferences
+    //the key must be what you had when writing
+    //since we are reading from the futre and not immediately we need .then
+    myPref
+        .getValue("username")
+        .then((value) => {usernameController.text = value});
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        // centerTitle: true,
-        // actions: const [
-        //   Icon(Icons.refresh),
-        //   SizedBox(
-        //     width: 12.0,
-        //   ),
-        //   Icon(Icons.save),
-        // ],
-        // title: const Text(
-        //   "Pizza",
-        //   style: TextStyle(fontWeight: FontWeight.w600),
-        // ),
         backgroundColor: appWhiteColor,
         foregroundColor: appWhiteColor,
       ),
@@ -60,16 +64,18 @@ class _LoginState extends State<Login> {
               const SizedBox(height: 24.0),
               const CustomText(label: "Enter Email", fontSize: 18),
               const SizedBox(height: 10.0),
-              const customTextField(
+              customTextField(
+                controller: usernameController,
                 hint: "Email Address",
                 inputType: TextInputType.emailAddress,
-                childWidget: Icon(Icons.person, color: Colors.black),
+                childWidget: const Icon(Icons.person, color: Colors.black),
               ),
               const SizedBox(height: 24.0),
               const CustomText(label: "Enter Password", fontSize: 18),
               const SizedBox(height: 10.0),
               customTextField(
                 hint: "Password",
+                controller: passwordController,
                 childWidget: const Icon(Icons.lock, color: Colors.black),
                 isPassword: isPassword,
                 suffixShowcon: IconButton(
@@ -129,8 +135,7 @@ class _LoginState extends State<Login> {
                   child: CustomButton(
                     label: "Sign In",
                     callback: () {
-                      //Get.toNamed("/home"); //allow user to come back here
-                      Get.offAndToNamed("/main"); //no back arrow to here
+                      login();
                     },
                   ),
                 ),
@@ -143,4 +148,10 @@ class _LoginState extends State<Login> {
   }
 
   //you can create functions here
+  void login() {
+    //we are going to store username and phone locally in sharedPreferences
+    myPref.writeValue("username", usernameController.text).then(
+          (value) => (Get.offAndToNamed("/main"),),
+        );
+  }
 }
